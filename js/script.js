@@ -42,7 +42,6 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    // eslint-disable-next-line no-unused-vars
     optArticleAuthorSelector = '.post-author';
 
   // eslint-disable-next-line no-inner-declarations
@@ -181,4 +180,36 @@
     }
   }
   addClickListenersToTags();
+
+  // eslint-disable-next-line no-inner-declarations
+  function generateAuthors(){
+
+    /* [DONE] find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    /* [DONE] START LOOP: for every article: */
+    for(let article of articles){
+
+      /* [DONE] find author wrapper */
+      const articleAuthorList = article.querySelector(optArticleAuthorSelector);
+
+      /* [DONE] make html variable with empty string */
+      let html = '';
+
+      /* [DONE] get author from data-author attribute */
+      const articleAuthor = article.getAttribute('data-author');
+
+      /* [DONE] generate HTML of the link */
+      const linkHTML = 'by&nbsp;<a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
+
+      /* [DONE] add generated code to html variable */
+      html = html + linkHTML;
+
+      /* [DONE] insert HTML of all the links into the tags wrapper */
+      articleAuthorList.innerHTML = html;
+
+    /* [DONE] END LOOP: for every article: */
+    }
+  }
+  generateAuthors();
 }
